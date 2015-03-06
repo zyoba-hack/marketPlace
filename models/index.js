@@ -1,3 +1,3 @@
 module.exports = {
-  questionRepo: require('')
+  market-place: require('index');
 }
