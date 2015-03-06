@@ -23,7 +23,7 @@ var buyer = {
         if (filters) {
             common.generateWhereClause(table, query, filters);
         }
-        //log(query);
+        // log(query);
         debug(query.toQuery());
         query.exec(cb);
     },
