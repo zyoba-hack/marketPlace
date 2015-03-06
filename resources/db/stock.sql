@@ -1,13 +1,56 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
-    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
-    <title>phpMyAdmin</title>
-    <link rel="stylesheet" type="text/css" href="phpmyadmin.css.php?server=1&amp;token=198ada7ad61f2052baa70ab4a1fe93c3&amp;js_frame=right&amp;nocache=5414022077" />
-    <link rel="stylesheet" type="text/css" href="print.css" media="print" />
-    <link rel="stylesheet" type="text/css" href="./themes/pmahomme/jquery/jquery-ui-1.8.custom.css" />
-    <meta name="robots" content="noindex,nofollow" />
-</head><body><p>export.php: Missing parameter: what<a href="Documentation.html#faqmissingparameters" target="documentation"><img class="icon" src="./themes/pmahomme/img/b_help.png" width="11" height="11" alt="Documentation" title="Documentation" /></a><br />export.php: Missing parameter: export_type<a href="Documentation.html#faqmissingparameters" target="documentation"><img class="icon" src="./themes/pmahomme/img/b_help.png" width="11" height="11" alt="Documentation" title="Documentation" /></a><br /></p></body></html>
+-- phpMyAdmin SQL Dump
+-- version 3.4.10.1deb1
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Mar 06, 2015 at 07:02 PM
+-- Server version: 5.5.41
+-- PHP Version: 5.3.10-1ubuntu3.16
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `mp_db`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `stock`
+--
+
+CREATE TABLE IF NOT EXISTS `stock` (
+  `id` int(12) NOT NULL AUTO_INCREMENT,
+  `seller_id` int(12) NOT NULL,
+  `product_id` int(12) NOT NULL,
+  `rem_stock` int(12) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `refilled_stock` int(12) NOT NULL,
+  `price_per_unit` int(12) NOT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `is_deleted` tinyint(4) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `product_id` (`product_id`),
+  KEY `seller_id` (`seller_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `stock`
+--
+ALTER TABLE `stock`
+  ADD CONSTRAINT `stock_ibfk_1` FOREIGN KEY (`seller_id`) REFERENCES `sellers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
