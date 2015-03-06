@@ -1,0 +1,2 @@
+appFactory = angular.module('', []);
+

@@ -1,0 +1,2 @@
+appDirective = angular.module('', []);
+
