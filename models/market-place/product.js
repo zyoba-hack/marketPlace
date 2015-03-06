@@ -23,7 +23,6 @@ var bm = {
         if (filters) {
             common.generateWhereClause(table, query, filters);
         }
-        log(query);
         debug(query.toQuery());
         query.exec(cb);
     },
