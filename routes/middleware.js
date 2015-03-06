@@ -17,8 +17,6 @@ var mw = {
     },
 
     respond: function respondfn(req, res, next) {
-        console.log(req.cdata);
-        console.log('a');
         res.json(req.cdata);
     },
 
