@@ -1,3 +1,3 @@
-app = angular.module('', []);
+var app = angular.module('market-place', ['categories']);
 
 
