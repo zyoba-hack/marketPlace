@@ -8,7 +8,7 @@ var common = require('../common');
 var bm = {
     table: db.define({
         name: 'user',
-        columns: ['id', 'username', 'password', 'type', 'phone_no']
+        columns: ['id', 'username', 'password', 'type', 'phone_no', 'created_at', 'updated_at', 'is_deleted']
     }),
 
     fetch: function (filters, selectFields, cb) {
@@ -29,6 +29,9 @@ var bm = {
 
     all: function (cb) {
         this.fetch(null, cb);
+    },
+    getPasswordByUser: function getPasswordByUser(id, cd) {
+
     }
 };
 
