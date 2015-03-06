@@ -1,3 +1,4 @@
 module.exports = {
-  market-place: require('index');
+  marketPlace: require('./market-place');
 }
+

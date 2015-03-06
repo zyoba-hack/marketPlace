@@ -5,9 +5,9 @@ var debug = require('debug')('board');
 var db = require('../db');
 var common = require('../common');
 
-var bm = {
+var transaction = {
     table: db.define({
-        name: 'boards',
+        name: 'transaction',
         columns: ['id', 'board']
     }),
 
@@ -35,7 +35,7 @@ var bm = {
     }
 };
 
-module.exports = bm;
+module.exports = transaction;
 
 //-- Test Code ----------------------------------------------------------
 if (require.main === module) {
