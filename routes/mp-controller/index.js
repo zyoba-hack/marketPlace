@@ -8,4 +8,5 @@ module.exports = function (app) {
   app.get('/api/categories', cg.getList, mw.respond, mw.error);
   app.get('/buyers',buyers.index);
   require('./sellers')(app);
+  require('./product')(app);
 }
