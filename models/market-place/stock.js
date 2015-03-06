@@ -7,8 +7,8 @@ var common = require('../common');
 
 var bm = {
     table: db.define({
-        name: 'seller',
-        columns: ['id', 'user_id', 'created_at','updated_at', 'is_deleted']
+        name: 'stock',
+        columns: ['id', 'seller_id', 'product_id' , 'rem_stock', 'refilled_stock','price_per_unit', 'created_at', 'updated_at', 'is_deleted']
     }),
 
     fetch: function (filters, selectFields, cb) {
