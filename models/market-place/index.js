@@ -1,6 +1,8 @@
 module.exports = {
-  user: require('./user');
-  seller:require('./seller');
-  transaction:require('.transaction');
-
+  transaction:require('.transaction'),
+  user: require('./user'),
+  buyer: require('./buyer'),
+  seller:require('./seller'),
+  stock:require('./stock')
 };
+

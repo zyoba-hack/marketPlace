@@ -7,11 +7,11 @@ var common = require('../common');
 
 var bm = {
     table: db.define({
-        name: 'user',
-        columns: ['id', 'username', 'password', 'type', 'phone_no', 'created_at', 'updated_at', 'is_deleted']
+        name: 'sellers',
+        columns: ['id', 'user_id', 'created_at','updated_at', 'is_deleted']
     }),
 
-    fetch: function fetch(filters, selectFields, cb) {
+    fetch: function (filters, selectFields, cb) {
         if (typeof selectFields === 'function') {
             cb = selectFields;
             selectFields = null;
@@ -25,6 +25,10 @@ var bm = {
         }
         debug(query.toQuery());
         query.exec(cb);
+    },
+
+    all: function (cb) {
+        this.fetch(null, cb);
     },
 
     add: function add(data, cb) {
@@ -46,44 +50,30 @@ var bm = {
             }
         }
     },
-
-    all: function all(cb) {
-        this.fetch(null, cb);
-    },
-
-    getPasswordByEmail: function getPasswordByEmail(username, cb) {
-        var filter = {
-            username: username
-        }
-        var selectFields = ['password'];
-        this.fetch(filter, selectFields, cb)
-    },
-
-
     save: function save(data, cb) {
-        var keys = {};
-        if (data.id) keys.id = data.id;
-        if (!Object.keys(keys).length) {
-            return cb(new Error('keys not found'));
-        }
+            var keys = {};
+            if (data.id) keys.id = data.id;
+            if (!Object.keys(keys).length) {
+                return cb(new Error('keys not found'));
+            }
 
-        data.updated_at = common.currentDate();
+            data.updated_at = common.currentDate();
 
-        var table = this.table;
-        var query = table.update(data);
-        common.generateWhereClause(table, query, keys);
-        debug(query.toQuery());
-        query.exec(respond);
+            var table = this.table;
+            var query = table.update(data);
+            common.generateWhereClause(table, query, keys);
+            debug(query.toQuery());
+            query.exec(respond);
 
-        function respond(err, res) {
-            if (!err && res) {
-                cb(null, data);
-            } else {
-                cb(err || new Error('unable to update record: ' + JSON.stringify(
-                    keys)));
+            function respond(err, res) {
+                if (!err && res) {
+                    cb(null, data);
+                } else {
+                    cb(err || new Error('unable to update record: ' + JSON.stringify(
+                        keys)));
+                }
             }
         }
-    }
 };
 
 module.exports = bm;
@@ -91,24 +81,19 @@ module.exports = bm;
 //-- Test Code ----------------------------------------------------------
 if (require.main === module) {
     (function () {
+        // console.log(require.main);
         // test code
-        bm.getPasswordByEmail("masureshho@gmail.com", function (error, data) {
+        bm.all(function (error, data) {
             console.log(error);
             console.log(data);
         });
-    })();
-}
-// Update table
-/*if (require.main === module) {
-    (function () {
-        // test code
+        // test code for save
         bm.save({
             id: 1,
-            username: 'hello@there.com'
+            updated_at: 'hello@there.com'
         }, function (error, data) {
             console.log(error);
             console.log(data);
         });
     })();
-
-}*/
+}
