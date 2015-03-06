@@ -1,7 +1,8 @@
 doctype html
 html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    block content
+	head
+		script(src="js/vendor/angular.min.js")
+		script(src="js/vendor/angular-ui-router.js")
+		script(src='js/app.js')
+	body(ng-app="market-place")
+		block content
