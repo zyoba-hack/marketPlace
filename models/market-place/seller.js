@@ -10,6 +10,7 @@ var bm = {
         name: 'sellers',
         columns: ['id', 'user_id', 'created_at','updated_at', 'is_deleted']
     }),
+    required: ['user_id'],
 
     fetch: function (filters, selectFields, cb) {
         if (typeof selectFields === 'function') {

@@ -1,4 +1,4 @@
 module.exports = {
-  marketPlace: require('./market-place');
+  marketPlace: require('./market-place')
 }
 

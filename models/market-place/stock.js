@@ -11,6 +11,8 @@ var bm = {
         columns: ['id', 'seller_id', 'product_id' , 'rem_stock', 'refilled_stock','price_per_unit', 'created_at', 'updated_at', 'is_deleted']
     }),
 
+    required: ['seller_id','product_id','refilled_stock', 'price_per_unit' ],
+
     fetch: function (filters, selectFields, cb) {
         if (typeof selectFields === 'function') {
             cb = selectFields;
