@@ -7,7 +7,7 @@ var common = require('../common');
 
 var bm = {
     table: db.define({
-        name: 'seller',
+        name: 'sellers',
         columns: ['id', 'user_id', 'created_at','updated_at', 'is_deleted']
     }),
 
@@ -23,7 +23,6 @@ var bm = {
         if (filters) {
             common.generateWhereClause(table, query, filters);
         }
-        log(query);
         debug(query.toQuery());
         query.exec(cb);
     },
@@ -50,7 +49,31 @@ var bm = {
                 cb(err || new Error('unable to add new record'));
             }
         }
-    }
+    },
+    save: function save(data, cb) {
+            var keys = {};
+            if (data.id) keys.id = data.id;
+            if (!Object.keys(keys).length) {
+                return cb(new Error('keys not found'));
+            }
+
+            data.updated_at = common.currentDate();
+
+            var table = this.table;
+            var query = table.update(data);
+            common.generateWhereClause(table, query, keys);
+            debug(query.toQuery());
+            query.exec(respond);
+
+            function respond(err, res) {
+                if (!err && res) {
+                    cb(null, data);
+                } else {
+                    cb(err || new Error('unable to update record: ' + JSON.stringify(
+                        keys)));
+                }
+            }
+        }
 };
 
 module.exports = bm;
@@ -58,9 +81,17 @@ module.exports = bm;
 //-- Test Code ----------------------------------------------------------
 if (require.main === module) {
     (function () {
-        console.log(require.main);
+        // console.log(require.main);
         // test code
         bm.all(function (error, data) {
+            console.log(error);
+            console.log(data);
+        });
+        // test code for save
+        bm.save({
+            id: 1,
+            updated_at: 'hello@there.com'
+        }, function (error, data) {
             console.log(error);
             console.log(data);
         });

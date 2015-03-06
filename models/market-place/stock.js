@@ -23,7 +23,6 @@ var bm = {
         if (filters) {
             common.generateWhereClause(table, query, filters);
         }
-        log(query);
         debug(query.toQuery());
         query.exec(cb);
     },
@@ -58,11 +57,19 @@ module.exports = bm;
 //-- Test Code ----------------------------------------------------------
 if (require.main === module) {
     (function () {
-        console.log(require.main);
+        // console.log(require.main);
         // test code
         bm.all(function (error, data) {
             console.log(error);
             console.log(data);
         });
+        //test code for save
+        // bm.save({
+        //     id: 1,
+        //     username: 'hello@there.com'
+        // }, function (error, data) {
+        //     console.log(error);
+        //     console.log(data);
+        // });
     })();
 }
