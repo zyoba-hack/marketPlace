@@ -1,4 +1,3 @@
-
 DROP TABLE IF EXISTS `sellers`;
 
 CREATE TABLE IF NOT EXISTS `sellers` (
