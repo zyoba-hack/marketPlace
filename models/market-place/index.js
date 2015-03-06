@@ -5,4 +5,5 @@ module.exports = {
   seller: require('./seller'),
   stock: require('./stock'),
   categories:require('./categories')
+  product : require ('./product')
 };
