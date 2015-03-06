@@ -1,3 +1,5 @@
+
+
 CREATE TABLE IF NOT EXISTS `stock` (
   `id` int(12) NOT NULL AUTO_INCREMENT,
   `seller_id` int(12) NOT NULL,
@@ -13,6 +15,7 @@ CREATE TABLE IF NOT EXISTS `stock` (
   KEY `seller_id` (`seller_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
-
 ALTER TABLE `stock`
+  ADD CONSTRAINT `stock_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `stock_ibfk_1` FOREIGN KEY (`seller_id`) REFERENCES `sellers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
