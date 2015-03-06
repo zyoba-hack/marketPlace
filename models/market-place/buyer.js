@@ -8,7 +8,7 @@ var common = require('../common');
 var buyer = {
     table: db.define({
         name: 'buyer',
-        columns: ['id', 'first_name' , 'last_name', 'email' 'cart_list', 'wish_list', 'delivery_address', 'phone', 'user_id', 'created_at', 'updated_at', 'is_deleted']
+        columns: ['id', 'first_name' , 'last_name', 'email', 'cart_list', 'wish_list', 'delivery_address', 'phone', 'user_id', 'created_at', 'updated_at', 'is_deleted']
     }),
 
     fetch: function (filters, selectFields, cb) {
@@ -23,7 +23,7 @@ var buyer = {
         if (filters) {
             common.generateWhereClause(table, query, filters);
         }
-        log(query);
+        //log(query);
         debug(query.toQuery());
         query.exec(cb);
     },
