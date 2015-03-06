@@ -11,7 +11,7 @@ var bm = {
         columns: ['id', 'user_id', 'contact_no', 'address_line1', 'address_line2', 'created_at','updated_at', 'is_deleted']
     }),
     required: ['user_id','contact_no'],
-    unique:['user_id','contact_no',],
+    uniqueFields:['user_id','contact_no',],
     fetch: function (filters, selectFields, cb) {
         if (typeof selectFields === 'function') {
             cb = selectFields;

@@ -5,7 +5,7 @@ var mw = require('../../middleware');
 
 module.exports=function(app){
     app.get('/api/seller/stock'
-            // ,sellers.
+            ,sellers.collect
             ,mw.respond
             ,mw.error
             );
