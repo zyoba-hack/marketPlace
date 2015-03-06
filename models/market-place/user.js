@@ -7,8 +7,8 @@ var common = require('../common');
 
 var bm = {
     table: db.define({
-        name: '',
-        columns: ['', '']
+        name: 'user',
+        columns: ['id', 'username', 'password', 'type', 'phone_no']
     }),
 
     fetch: function (filters, selectFields, cb) {
@@ -23,7 +23,6 @@ var bm = {
         if (filters) {
             common.generateWhereClause(table, query, filters);
         }
-        log(query);
         debug(query.toQuery());
         query.exec(cb);
     },
