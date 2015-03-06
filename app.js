@@ -46,8 +46,6 @@ if (app.get('env') === 'development') {
             error: err
         });
     });
-    console.logapp.set('port', process.env.PORT || 4545);
-    ('Express server listening on port ' + server.address().port);
 }
 
 // production error handler
@@ -60,6 +58,9 @@ app.use(function (err, req, res, next) {
     });
 });
 
-var server = app.listen(app.get('port'), function () {});
+var server = app.listen(app.get('port'), function () {
+    console.log('MarketPlace running at port', process.env.PORT || 4545);
+
+});
 
 module.exports = app;
