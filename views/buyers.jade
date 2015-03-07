@@ -1,8 +1,0 @@
-extends layout
-block content
-	#selectCategory(ng-controller='categoriesCtrl')
-		select(ng-value ='Select Categories',ng-model="currentPage" ng-change="go(currentPage)")
-			option(value="select categories" ng-repeat = "data in datas") {{data.name}}
-
-	#categoryDetail
-		ui-view
