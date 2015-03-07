@@ -22,13 +22,10 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'views')));
 
 // catch 404 and forward to error handler
 
 require('./routes')(app);
-
-
 
 app.use(function (req, res, next) {
     var err = new Error('Not Found');
