@@ -16,4 +16,3 @@ CREATE TABLE IF NOT EXISTS `sellers` (
 
 ALTER TABLE `sellers`
   ADD CONSTRAINT `sellers_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
