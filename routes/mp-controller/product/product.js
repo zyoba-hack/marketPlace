@@ -27,10 +27,17 @@ var product = {
 
   	pm.add(req.nc_collectdata,result);
   	function result(err,response){
-  		if (err)
-  			console.log(err)
-  		else 
-  			console.log(response)
+  		if(err) return next(err);
+      if(!err && result){
+          console.log(response);
+          req.cdata={
+              success:1,
+              error: 0,
+              data:result,
+              message:"product successfully added"
+          };
+          next();
+      }
   	};
     
 
@@ -39,11 +46,17 @@ var product = {
   fetchProduct : function fetchProduct(req,res,next){
   	pm.fetch({category:req.body['category']},result);
   	function result(err,response){
-  		if (err)
-  			console.log(err)
-  		else 
-  			console.log(response)
-  		next();
+  		if(err) return next(err);
+      if(!err && result){
+          console.log(response);
+          req.cdata={
+              success:1,
+              error: 0,
+              data:result,
+              message:"product successfully fetched"
+          };
+          next();
+      }
   	};
   	 
 
